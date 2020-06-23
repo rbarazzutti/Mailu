@@ -1,10 +1,10 @@
 ARG DISTRO=alpine:3.10
 FROM $DISTRO as builder
 WORKDIR /tmp
-RUN apk add git build-base automake autoconf libtool dovecot-dev xapian-core-dev icu-dev
+RUN apk add git build-base automake autoconf libtool dovecot-dev xapian-core-dev icu-dev sqlite-dev
 RUN git clone https://github.com/grosjo/fts-xapian.git \
   && cd fts-xapian \
-  && git checkout 1.2.7 \
+  && git checkout 1.3.2 \
   && autoreconf -vi \
   && PANDOC=false ./configure --with-dovecot=/usr/lib/dovecot \
   && make \
